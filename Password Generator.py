@@ -1,5 +1,6 @@
 #Password Generator Project
-import random
+import secrets
+
 letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
@@ -14,15 +15,15 @@ nr_numbers = int(input(f"How many numbers would you like?\n"))
 first_password = ""
 
 for i in range(0, nr_letters):
-  first_password += letters[random.randint(0, len(letters) - 1)]
+  first_password += letters[secrets.SystemRandom().randint(0, len(letters) - 1)]
 
 for i in range(0, nr_numbers):
-  first_password += numbers[random.randint(0, len(numbers) - 1)]
+  first_password += numbers[secrets.SystemRandom().randint(0, len(numbers) - 1)]
 
 for i in range(0, nr_numbers):
-  first_password += symbols[random.randint(0, len(symbols) - 1)]
+  first_password += symbols[secrets.SystemRandom().randint(0, len(symbols) - 1)]
 
 pw_list = list(first_password)
-random.shuffle(pw_list)
+secrets.SystemRandom().shuffle(pw_list)
 final_password = ''.join(pw_list)
 print(final_password)
